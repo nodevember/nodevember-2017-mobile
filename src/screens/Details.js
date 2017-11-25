@@ -12,6 +12,7 @@ import {
 import { Constants, Video } from 'expo';
 import FadeIn from 'react-native-fade-in-image';
 import ReadMore from 'react-native-read-more-text';
+import { BorderlessButton } from 'react-native-gesture-handler';
 import { HeaderBackButton } from 'react-navigation';
 import { View as AnimatableView } from 'react-native-animatable';
 import _ from 'lodash';
@@ -22,6 +23,66 @@ import { Colors, FontSizes, Layout } from '../constants';
 import { RegularText, BoldText, SemiBoldText } from '../components/StyledText';
 import { getSpeakerAvatarURL } from '../utils';
 import { findTalkData, findSpeakerData } from '../data';
+import SaveButton from '../components/SaveButton';
+import { loadSavedTalks, storeSavedTalks } from '../utils/storageSettings';
+import { Ionicons } from '@expo/vector-icons';
+
+class SavedButtonNavigationItem extends React.Component {
+  state = {
+    savedTalks: {},
+  };
+
+  componentDidMount() {
+    loadSavedTalks().then(value => this.setState({ savedTalks: value || {} }));
+  }
+
+  _handleSaveToggle = () => {
+    let key = _.snakeCase(this.props.talk.title);
+    this.setState(
+      state => ({
+        savedTalks: {
+          ...state.savedTalks,
+          [key]: !state.savedTalks[key],
+        },
+      }),
+      this._storeSavedTalks
+    );
+  };
+
+  _storeSavedTalks = () => {
+    storeSavedTalks(this.state.savedTalks);
+  };
+
+  render() {
+    const { talk } = this.props;
+    const isIOS = Platform.OS === 'ios';
+    const active = this.state.savedTalks[_.snakeCase(talk.title)];
+
+    return (
+      <View
+        style={{
+          // gross dumb things
+          paddingTop: Platform.OS === 'android' ? 17 : 0,
+          marginTop: Layout.notchHeight > 0 ? -5 : 0,
+        }}
+      >
+        <BorderlessButton
+          // onPress={this._handleSaveToggle}
+          style={{
+            alignSelf: 'flex-start',
+          }}
+          hitSlop={{ left: 15, top: 15, right: 15, bottom: 15 }}
+        >
+          <Ionicons
+            name={`${isIOS ? 'ios' : 'md'}-heart${active ? '' : '-outline'}`}
+            size={28}
+            color={'#FFF'}
+          />
+        </BorderlessButton>
+      </View>
+    );
+  }
+}
 
 export default class Details extends React.Component {
   state = {
@@ -178,6 +239,7 @@ export default class Details extends React.Component {
               />
             </View>
           )}
+          renderRightButton={() => <SavedButtonNavigationItem talk={talk} />}
         />
       </View>
     );
