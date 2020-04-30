@@ -1,25 +1,3 @@
 {
-  "parser": "babel-eslint",
-  "plugins": [
-    "react",
-    "react-native"
-  ],
-  "extends": [
-    "eslint:recommended",
-    "plugin:react/recommended"
-  ],
-  "parserOptions": {
-    "ecmaFeatures": {
-      "jsx": true
-    }
-  },
-  "env": {
-    "es6": true,
-    "jest": true,
-    "node": true
-  },
-  "rules": {
-    "no-console": "warn",
-    "react/prop-types": "off"
-  }
+  "extends": "universe/native"
 }

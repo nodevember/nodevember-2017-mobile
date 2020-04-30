@@ -1,29 +1,12 @@
-# Nodevember app
+# React Europe
 
-- Download [Nodevember on the Apple App Store](https://itunes.apple.com/us/app/nodevember/id1316372562?mt=8)
-- Download [Nodevember on Google Play](https://play.google.com/store/apps/details?id=org.nodevember.app&hl=en)
-- Open November [with the Expo client](https://expo.io/@nodevember/app)
+- Download [on Apple App Store](https://itunes.apple.com/bz/app/reacteurope-official-app/id1230066908?mt=8)
+- Download [on Google Play](https://play.google.com/store/apps/details?id=hr.apps.n6574)
+- or... open it with the Expo client: [https://expo.io/@patcito/reacteurope](https://expo.io/@patcito/reacteurope)
 
-## Get it running on your machine (anybody)
+## Get it running on your machine
 
-- `yarn global add exp`
+- `yarn global add expo-cli`
 - Clone this repo, cd into it, run `yarn`
-- `exp start`
-- Scan the QR code from your phone. Alternatively, in another terminal window run `exp ios` and/or `exp android` to open in simulator.
-
-## Deployment (for project owners)
-
-### Publishing updates (JS only)
-
-First, sign in `nodevember` Expo account.
-
-- Android: `exp publish --release-channel android`
-- iOS: `exp publish --release-channel ios`
-- Expo client: `exp publish`
-
-### Standalone builds
-
-First, sign in to the `nodevember` Expo account.
-
-- Android: `exp build:android --release-channel android`
-- iOS: `exp build:android --release-channel ios`
+- `expo start`
+- Scan the QR code from your phone. Alternatively, in another terminal window run `expo ios` and/or `expo android` to open in simulator.

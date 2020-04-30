@@ -1,30 +1,39 @@
 {
   "expo": {
-    "name": "Nodevember",
-    "description":
-      "Official app for the Nodevember 2017 conference, November 27-28 in Nashville, Tennessee. Read the source or get the app store and play store links on Github: https://github.com/nodevember/nodevember-2017-mobile",
-    "slug": "app",
+    "name": "ReactEurope",
+    "description": "Official react-europe app for the May 2019 conference, May 23-24 in Paris, France. Read the source or get the app store and play store links on Github: https://github.com/react-europe/react-europe-2018-mobile. Credits to Brent Vatne and Expo.",
+    "slug": "reacteurope",
     "privacy": "public",
-    "version": "1.0.4",
-    "primaryColor": "#187f65",
+    "version": "48.6.9",
+    "primaryColor": "#4d5fab",
     "icon": "./src/assets/icon-ios.png",
     "orientation": "portrait",
-    "sdkVersion": "25.0.0",
+    "sdkVersion": "36.0.0",
+    "scheme": "reacteurope",
+    "assetBundlePatterns": ["**/*"],
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
     "splash": {
       "image": "./src/assets/splash-icon.png",
       "resizeMode": "contain",
-      "backgroundColor": "#187f65"
+      "backgroundColor": "#4d5fab"
     },
     "android": {
-      "package": "org.nodevember.app",
+      "package": "hr.apps.n6574",
       "icon": "./src/assets/icon-android.png",
-      "versionCode": 3,
-      "permissions": []
+      "versionCode": 58,
+      "permissions": ["WRITE_CONTACTS", "READ_CONTACTS", "CAMERA"]
     },
     "ios": {
-      "bundleIdentifier": "org.nodevember.app",
+      "bundleIdentifier": "reacteurope",
       "supportsTablet": true,
-      "loadJSInBackgroundExperimental": true
-    }
+      "loadJSInBackgroundExperimental": true,
+      "infoPlist": {
+        "NSLocationAlwaysUsageDescription": "We don't track your location but some of the app modules have this feature though they are not used by the app.",
+        "NSCameraUsageDescription": "Camera is needed to scan your QRcode."
+      }
+    },
+    "platforms": ["ios", "android"]
   }
 }
